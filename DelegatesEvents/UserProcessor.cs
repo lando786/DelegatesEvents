@@ -6,9 +6,9 @@ namespace DelegatesEvents
 {
     public class UserProcessor
     {
-        public delegate void UserProcesseEventHandler(object source, EventArgs args);
+        public delegate void UserProcesserEventHandler(object source, EventArgs args);
 
-        public event UserProcesseEventHandler UserProcessed;
+        public event UserProcesserEventHandler UserProcessed;
 
         public void ProcessUser()
         {
