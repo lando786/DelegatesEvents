@@ -7,24 +7,24 @@ namespace DelegateEventsTests
     [TestClass]
     public class UserProcessorTest
     {
-        private bool eventRaised = false;
-        private UserProcessor processor;
+        private bool _eventRaised = false;
+        private UserProcessor _processor;
 
         [TestInitialize]
         public void Setup()
         {
-            processor = new UserProcessor();
-            processor.UserProcessed += delegate (object sender, EventArgs args)
+            _processor = new UserProcessor();
+            _processor.UserProcessed += delegate (object sender, EventArgs args)
             {
-                eventRaised = true;
+                _eventRaised = true;
             };
         }
 
         [TestMethod]
         public void WhenCallingProcessUserEventShouldBeKickedOff()
         {
-            processor.ProcessUser();
-            Assert.IsTrue(eventRaised);
+            _processor.ProcessUser();
+            Assert.IsTrue(_eventRaised);
         }
     }
 }
