@@ -12,7 +12,6 @@ namespace DelegatesEvents
 
         public void ProcessUser()
         {
-            throw new NotImplementedException();
             OnUserProcessed();
         }
 
