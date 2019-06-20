@@ -11,22 +11,21 @@ namespace DelegateEventsTests
     [TestClass]
     public class EmailNotificationServiceTest
     {
-        private Mock<EmailNotificationService> _emailService;
+        private Mock<IEmailNotificationService> _emailService;
         private UserProcessor _userProcessor;
 
         [TestMethod]
-        public void EmailShouldBeSentAfterEventKickedOffByUserProcessor()
+        public void OnUserProcessedShouldBeCalledAfterEventKickedOffByUserProcessor()
         {
             _userProcessor.ProcessUser();
-            _emailService.Verify(x => x.SendEmail(), Times.Once);
+            _emailService.Verify(x => x.OnUserProcessed(It.IsAny<object>(), It.IsAny<EventArgs>()), Times.AtLeastOnce);
         }
 
         [TestInitialize]
         public void Setup()
         {
             _userProcessor = new UserProcessor();
-            _emailService = new Mock<EmailNotificationService>();
-
+            _emailService = new Mock<IEmailNotificationService>();
             _userProcessor.UserProcessed += _emailService.Object.OnUserProcessed;
         }
     }

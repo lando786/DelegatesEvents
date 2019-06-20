@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace DelegatesEvents
 {
@@ -12,6 +13,8 @@ namespace DelegatesEvents
 
         public void ProcessUser()
         {
+            Console.WriteLine("Processing User...");
+            Thread.Sleep(2500);
             OnUserProcessed();
         }
 

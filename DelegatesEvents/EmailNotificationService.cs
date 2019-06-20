@@ -4,11 +4,17 @@ using System.Text;
 
 namespace DelegatesEvents
 {
-    public class EmailNotificationService
+    public interface IEmailNotificationService
+    {
+        void OnUserProcessed(object sender, EventArgs args);
+
+        void SendEmail();
+    }
+
+    public class EmailNotificationService : IEmailNotificationService
     {
         public void OnUserProcessed(object sender, EventArgs args)
         {
-            throw new NotImplementedException();
             SendEmail();
         }
 
